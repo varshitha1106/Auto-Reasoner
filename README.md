@@ -35,9 +35,10 @@ A beginner-friendly tool that analyzes GitHub repositories using AST parsing and
    cd ..
    ```
 
-3. **Set up GitHub token:**
+3. **Set up environment variables:**
    - Create a `.env` file in the project root
    - Add your GitHub token: `GITHUB_TOKEN=your_token_here`
+   - Add your frontend origin for CORS: `FRONTEND_URL=http://localhost:3000`
 
 ## How to Run the Application
 

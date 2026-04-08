@@ -21,12 +21,17 @@ from backend.analyzer import parse_files_with_treesitter, summarize_repository
 app = FastAPI(title="AutoReasoner API")
 
 # Enable CORS for React frontend
-FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
-ALLOWED_ORIGINS = [
+DEFAULT_FRONTEND_ORIGINS = [
     "http://localhost:3000",  # Local development
     "http://localhost:5173",  # Vite dev server
-    FRONTEND_URL,  # Production frontend
 ]
+
+FRONTEND_URL = os.getenv("FRONTEND_URL")
+ALLOWED_ORIGINS = DEFAULT_FRONTEND_ORIGINS + [
+    origin.strip()
+    for origin in FRONTEND_URL.split(",")
+    if origin and origin.strip()
+] if FRONTEND_URL else DEFAULT_FRONTEND_ORIGINS
 
 app.add_middleware(
     CORSMiddleware,
