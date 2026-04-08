@@ -48,11 +48,26 @@ if not SECRET_KEY:
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+pwd_context = CryptContext(
+    schemes=["pbkdf2_sha256", "bcrypt"],
+    deprecated="auto"
+)
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
+
+def _normalize_password_for_bcrypt(password: str):
+    password_bytes = password.encode("utf-8")
+    if len(password_bytes) > 72:
+        return password_bytes[:72]
+    return password_bytes
+
+
 def verify_password(plain_password, hashed_password):
+    if isinstance(hashed_password, str) and hashed_password.startswith(("$2a$", "$2b$", "$2y$")):
+        normalized = _normalize_password_for_bcrypt(plain_password)
+        return pwd_context.verify(normalized, hashed_password)
     return pwd_context.verify(plain_password, hashed_password)
+
 
 def get_password_hash(password):
     return pwd_context.hash(password)
