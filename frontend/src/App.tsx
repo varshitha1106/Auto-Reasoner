@@ -7,7 +7,7 @@
  */
 
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { analyzeRepo, getAnalysis, AnalysisResult, FileSummary } from "./api";
 import { AuthProvider, useAuth } from './AuthContext';
 import LoginPage from './LoginPage';

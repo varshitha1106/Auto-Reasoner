@@ -22,7 +22,7 @@ const FileTreeItem = ({ node, repoUrl, token }: { node: FileNode, repoUrl: strin
             // Open explanation in new tab
             const encodedRepo = encodeURIComponent(repoUrl);
             const encodedFile = encodeURIComponent(node.path);
-            const url = `/explanation?repo=${encodedRepo}&file=${encodedFile}`;
+            const url = `/#/explanation?repo=${encodedRepo}&file=${encodedFile}`;
             window.open(url, '_blank');
         } else {
             // Toggle folder
