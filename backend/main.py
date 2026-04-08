@@ -21,7 +21,7 @@ from backend.analyzer import parse_files_with_treesitter, summarize_repository
 app = FastAPI(title="AutoReasoner API")
 
 # Enable CORS for React frontend
-FRONTEND_URL = os.getenv("REACT_APP_API_URL", "http://localhost:3000")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "http://localhost:3000")
 ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Local development
     "http://localhost:5173",  # Vite dev server

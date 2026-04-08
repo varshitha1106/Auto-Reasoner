@@ -14,6 +14,8 @@ services:
         sync: false
       - key: GEMINI_API_KEY
         sync: false
+      - key: FRONTEND_URL
+        value: https://auto-reasoner-frontend-7ddv.onrender.com
       - key: DATABASE_URL
         value: sqlite:///./test.db
 

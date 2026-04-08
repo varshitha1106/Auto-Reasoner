@@ -1,7 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 
 const AuthContext = createContext(null);
-
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:8000";
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [token, setToken] = useState(localStorage.getItem('token'));
@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
         const validateToken = async () => {
             if (token) {
                 try {
-                    const response = await fetch('http://localhost:8000/users/me', {
+                    const response = await fetch(`${API_BASE_URL}/users/me`, {
                         headers: { Authorization: `Bearer ${token}` }
                     });
                     if (response.ok) {
@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
         formData.append('username', username);
         formData.append('password', password);
 
-        const response = await fetch('http://localhost:8000/token', {
+        const response = await fetch(`${API_BASE_URL}/token`, {
             method: 'POST',
             body: formData,
         });
@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
 
         // Fetch user profile immediately
         try {
-            const userResponse = await fetch('http://localhost:8000/users/me', {
+            const userResponse = await fetch(`${API_BASE_URL}/users/me`, {
                 headers: { Authorization: `Bearer ${accessToken}` }
             });
             if (userResponse.ok) {
@@ -66,7 +66,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     const register = async (username, password) => {
-        const response = await fetch('http://localhost:8000/register', {
+        const response = await fetch(`${API_BASE_URL}/register`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password }),
