@@ -1,0 +1,31 @@
+# AutoReasoner Backend Dependencies
+
+# Web framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# HTTP requests for GitHub API
+requests==2.31.0
+
+# AST parsing
+tree-sitter==0.20.4
+tree-sitter-python>=0.23.0
+
+# LLM and LangChain
+transformers>=4.35.0
+torch>=2.2.0
+langchain>=0.0.350
+sentencepiece>=0.1.99
+google-generativeai>=0.3.0
+
+# Environment variables
+python-dotenv==1.0.0
+
+# CORS support (included in FastAPI but explicit)
+pydantic==2.5.0
+passlib[bcrypt]==1.7.4
+python-jose[cryptography]==3.3.0
+python-multipart==0.0.6
+
+# Note: SQLite is used for database (built into Python, no installation needed)
+
