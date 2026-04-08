@@ -24,4 +24,4 @@ services:
     staticPublishPath: frontend/build
     envVars:
       - key: REACT_APP_API_URL
-        sync: false  # Set this manually after backend is deployed
+        value: https://auto-reasoner-backend.onrender.com
