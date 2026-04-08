@@ -88,7 +88,6 @@ npm start
 │   │   └── api.ts        # API client
 │   └── package.json
 ├── requirements.txt      # Python dependencies
-├── start_app.bat         # OPTIMIZED: Single startup script
 └── README.md
 ```
 
