@@ -42,13 +42,7 @@ A beginner-friendly tool that analyzes GitHub repositories using AST parsing and
 
 ## How to Run the Application
 
-### Option 1: One-Click Start (Recommended)
-1. **Double-click** the `start_app.bat` file in the project root.
-2. Two command windows will open (one for the backend, one for the frontend).
-3. The browser will automatically open at `http://localhost:3000`.
-
-### Option 2: Manual Start
-If the batch file doesn't work, you can start the servers manually in two separate terminal windows:
+### Manual Start
 
 **Terminal 1 (Backend):**
 ```bash
